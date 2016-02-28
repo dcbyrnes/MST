@@ -11,7 +11,7 @@
 #define WINDOW_WIDTH 700
 #define WINDOW_HEIGHT 700
 
-void Display(void);
+void Display();
 void drawEdge(int index);
 void initGraphStructure(int V, int E);
 

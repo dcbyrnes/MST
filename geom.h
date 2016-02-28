@@ -21,7 +21,7 @@ struct Edge {
 	double weight;
 };
 
-// undirected, weighted graph
+// undirected, connected, weighted graph
 struct Graph {
 	int v, e; // vertices and edges
 	struct Edge * edge;

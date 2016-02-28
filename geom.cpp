@@ -21,7 +21,6 @@ int comp(const void * a, const void * b) {
 
 double computeSlope(Point2D a, Point2D b) {
 	if ( fabs(a.x - b.x) < DELTA) {
-		std::cout << a.x << " " << b.x << std::endl;
 		return DBL_MAX;
 	}
 	if ( fabs(a.y - b.y) < DELTA ) {

@@ -1,11 +1,10 @@
 #include "Render.h"
 
 
-void Display(void) {
+void Display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	// glPolygonMode(GL_FRONT, GL_FILL);
 
 	// draw vertices 
 	glPointSize(10);
@@ -37,7 +36,7 @@ void Display(void) {
 
 	// // draw MST 
 	for (int j = 0; j < points->size() - 1; j++) { // size of MST array is always #points - 1 
-		usleep(1000000);
+		usleep(1000000); // sleep 1 second to slow down display 
 		drawEdge(j);
 	}
 }
@@ -59,10 +58,11 @@ int main(int argc, char ** argv) {
 
 	int vertices = 5;
 	int edges = 7;
-	initGraphStructure(vertices, edges);
+	initGraphStructure(vertices, edges); // create graph 
 
-	MST = KruskalMST(G);
+	MST = KruskalMST(G); // compute MST 
 
+	// init window for rendering 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -90,7 +90,7 @@ void initGraphStructure(int V, int E) {
 	points->push_back(Point2D(400, -50));
 	points->push_back(Point2D(600, -50));
 
-	G = createGraph(V, E);
+	G = createGraph(V, E); // consider changing this to adjacency matrix
 
 	G->edge[0].source = 0;
 	G->edge[0].destination = 1;

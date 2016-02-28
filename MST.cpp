@@ -1,11 +1,17 @@
 #include "MST.h"
 
+/* 
+	Kruskal's algorithm to find minimum spanning tree. Uses a disjoint-set
+	data structure (supports union and find operations) to prevent cycles in MST. 
+*/
+
 Edge * KruskalMST(Graph * graph) {
 	int vertices = graph->v;
 	Edge * MST = new Edge[vertices];
-	// Edge * MST = (Edge*) malloc (vertices * sizeof(Edge));
 	int e = 0, i = 0;
 	
+	// sort edges by weights
+	// selection of edges occurs via greedy algorithm
 	qsort(graph->edge, graph->e, sizeof(graph->edge[0]), comp);
 
 	Subset * subsets = (Subset * ) malloc(vertices * sizeof (Subset) );
