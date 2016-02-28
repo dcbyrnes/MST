@@ -1,6 +1,25 @@
 #include "Render.h"
 
 
+int main(int argc, char ** argv) {
+
+	int vertices = 5;
+	int edges = 7;
+	initGraphStructure(vertices, edges); // create graph 
+
+	MST = KruskalMST(G); // compute MST 
+
+	// init window for rendering 
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	glutInitWindowPosition(20, 20);
+	glutCreateWindow("Render");
+	glClearColor(0.0,0.0,0.0,0.0);
+	glutDisplayFunc(Display); 
+	glutMainLoop();
+}
+
 void Display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
@@ -52,25 +71,6 @@ void drawEdge(int index) {
 		glVertex2f(points->at(end).x/WINDOW_WIDTH, points->at(end).y/WINDOW_WIDTH);
 	glEnd();
 	glFlush();
-}
-
-int main(int argc, char ** argv) {
-
-	int vertices = 5;
-	int edges = 7;
-	initGraphStructure(vertices, edges); // create graph 
-
-	MST = KruskalMST(G); // compute MST 
-
-	// init window for rendering 
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	glutInitWindowPosition(20, 20);
-	glutCreateWindow("Render");
-	glClearColor(0.0,0.0,0.0,0.0);
-	glutDisplayFunc(Display); 
-	glutMainLoop();
 }
 
 void initGraphStructure(int V, int E) {
